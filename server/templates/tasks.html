@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tareas</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/task_style.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Menú de navegación -->
+        <nav class="navbar">
+            <div class="navbar-left">
+                <h1>Mis Tareas</h1>
+            </div>
+            <div class="navbar-right">
+                <span id="username">Usuario: {{ session['name'] }} {{ session['lastname'] }}</span>
+                <a class="logout-btn" href="{{url_for('logout')}}">Cerrar Sesión</a>
+            </div>
+        </nav>
+
+        <!-- Contenido principal -->
+        <main>
+
+            <header class="menu">
+                <h1>Lista de Tareas</h1>
+                <button id="openNewTaskModalBtn" class="task-btn">
+                    <i class="fas fa-plus"></i> Agregar Tarea
+                </button>
+            </header>
+
+            <div class="task-container task-list">
+                {% if tasks %}
+                {% for task in tasks %}
+                <div class="task">
+                    <h3>{{ task[2] }}</h3>
+                    <p>{{ task[3] }}</p>
+                    <div class="task-info">
+                        <div class="task-btn none">
+                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                            Fecha: {{ task[4] }}
+                        </div>
+                        <div class="task-btn none">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                            Usuario: {{ task[6] }}
+                        </div>
+                        <div class="task-btn none">
+                            <i class="fa fa-tasks" aria-hidden="true"></i>
+                            Estado: {{ task[7] }}
+                        </div>
+                    </div>
+                    <div class="task-options">
+                        <button class="edit-btn task-btn info" data-id="{{ task[0] }}" data-title="{{ task[2] }}"  data-description="{{ task[3] }}" data-deadline="{{ task[4] }}" data-status="{{task[5]}}" >
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                            Editar
+                        </button>
+                        <form action="/task/done" method="POST">
+                            <button type="submit" class="task-btn success">
+                                <input type="text" name="task_id" value="{{ task[0] }}" hidden>
+                                <i class="fa fa-check" aria-hidden="true"></i>
+                                Terminar
+                            </button>
+                        </form>
+                        <form action="/task/delete" method="POST">
+                            <button type="submit" class="task-btn error">
+                                <input type="text" name="task_id" value="{{ task[0] }}" hidden>
+                                <i class="fa fa-check" aria-hidden="true"></i>
+                                Eliminar
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                {% endfor %}
+                {% else %}
+                <li>No hay tareas pendientes.</li>
+                {% endif %}
+
+            </div>
+
+            <!-- Modal para agregar una nueva tarea -->
+            <div id="newTaskModal" class="modal">
+                <div class="modal-content">
+                    <span id="closeNewTaskModalBtn" class="close">&times;</span>
+                    <h2>Nueva Tarea</h2>
+                    <form action="/task/add" method="POST">
+                        <!-- Campo Título -->
+                        <label for="title">Título:</label>
+                        <input type="text" id="title" name="title" placeholder="Titulo de la tarea" maxlength="45">
+
+                        <!-- Campo Descripción -->
+                        <label for="description">Descripción:</label>
+                        <textarea id="description" name="description" placeholder="Descripción de la tarea"
+                            maxlength="250" required></textarea>
+
+                        <!-- Campo Estado -->
+                        <label for="status">Estado:</label>
+                        <select id="status" name="status" required>
+                            <option value="1">Pendiente</option>
+                            <option value="2">En curso</option>
+                            <option value="3">Terminada</option>
+                            <option value="4">Cancelada</option>
+                            <option value="5">Vencida</option>
+                        </select>
+
+                        <!-- Campo Fecha Límite -->
+                        <label for="deadline">Fecha Límite:</label>
+                        <input type="date" id="deadline" name="deadline" required>
+
+                        <!-- Campo Responsable (desplegable con usuarios) -->
+                        <label for="user">Responsable:</label>
+                        <select id="user" name="user" required>
+                            {% for user in users %}
+                            <option value="{{ user[0] }}">{{ user[1] }}</option>
+                            {% endfor %}
+                        </select>
+
+                        <!-- Botón de enviar -->
+                        <button class="task-btn info" type="submit">Agregar Tarea</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Modal para editar una tarea -->
+            <div id="editTaskModal" class="modal">
+                <div class="modal-content">
+                    <span id="closeEditTaskModalBtn" class="close">&times;</span>
+                    <h2>Editar Tarea</h2>
+                    <form action="/task/edit" method="POST">
+
+                        <input type="text" id="task_id" name="task_id" hidden>
+
+                        <!-- Campo Título -->
+                        <label for="title">Título:</label>
+                        <input type="text" id="title" name="title" required>
+
+                        <!-- Campo Descripción -->
+                        <label for="description">Descripción:</label>
+                        <textarea id="description" name="description" required></textarea>
+
+                        <!-- Campo Estado -->
+                        <label for="status">Estado:</label>
+                        <select id="status" name="status" required>
+                            <option value="1">Pendiente</option>
+                            <option value="2">En curso</option>
+                            <option value="3">Terminada</option>
+                            <option value="4">Cancelada</option>
+                            <option value="5">Vencida</option>
+                        </select>
+
+                        <!-- Campo Fecha Límite -->
+                        <label for="deadline">Fecha Límite:</label>
+                        <input type="date" id="deadline" name="deadline" required>
+
+                        <!-- Campo Responsable (desplegable con usuarios) -->
+                        <label for="user">Responsable:</label>
+                        <select id="user" name="user" required>
+                            {% for user in users %}
+                            <option value="{{ user[0] }}">{{ user[4] }}</option>
+                            {% endfor %}
+                        </select>
+
+                        <!-- Botón de enviar -->
+                        <button class="task-btn info" type="submit">Editar Tarea</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+</body>
+
+<script src="{{url_for('static', filename='js/task.js')}}"></script>
+
+</html>

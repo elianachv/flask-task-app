@@ -1,0 +1,226 @@
+/* styles.css */
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #e0f7f7; 
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #00a5a5; 
+  color: white;
+  padding: 10px 20px;
+}
+
+.navbar-left h1 {
+  margin: 0;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+#username {
+  margin-right: 20px;
+}
+
+.logout-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  text-decoration: underline;
+}
+
+main {
+  flex: 1;
+  padding: 20px;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+.task-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.task {
+  background-color: white;
+  border: 1px solid #ccc; /* Color de borde gris claro */
+  border-radius: 4px;
+  padding: 25px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.task h3 {
+  margin-top: 0;
+  color: #333; /* Color de texto oscuro para el título */
+}
+
+.task p {
+  margin: 0;
+  color: #666; /* Color de texto gris para la descripción */
+}
+
+/* Estilo del encabezado y el botón */
+.menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-options, .task-info{
+  display: flex;
+}
+
+.task-btn {
+  background-color: #00a5a5; /* Aguamarina */
+  color: white;
+  padding: 10px 15px;
+  margin: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.task-btn i {
+  margin-right: 8px;
+}
+
+.task-btn:hover {
+  background-color: #00a5a5; /* Aguamarina oscuro */
+}
+
+.task-btn.none{
+  background-color:transparent;
+  color: black;
+}
+
+.task-btn.success{
+  background-color: rgb(32, 166, 32);
+}
+
+.task-btn.error{
+  background-color: rgb(166, 9, 9);
+}
+
+.task-btn.warning{
+  background-color: orange;
+}
+
+.task-btn.info{
+  background-color: #00bcd4;
+}
+
+/* Estilos de la lista de tareas */
+.task-list {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.task-list li {
+  background-color: #e0f7fa; /* Aguamarina claro */
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #00acc1;
+}
+
+/* Estilos del modal */
+.modal {
+  display: none; /* Oculto por defecto */
+  position: fixed; /* El modal estará fijo en la pantalla */
+  z-index: 1; /* Encima de todo */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semitransparente */
+}
+
+/* Contenedor del contenido del modal */
+.modal-content {
+  background-color: white;
+  margin: 15% auto; /* Centrado vertical y horizontal */
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 600px; /* Ancho máximo del modal */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  animation-name: modalOpen;
+  animation-duration: 0.4s;
+}
+
+/* Animación de apertura del modal */
+@keyframes modalOpen {
+  from {
+      opacity: 0;
+      transform: translateY(-50px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+/* Estilo del botón de cerrar */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Estilos del formulario dentro del modal */
+form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+form input[type="text"],
+form input[type="date"],
+form select,
+form textarea {
+  width: 90%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+form textarea {
+  height: 100px;
+  resize: vertical;
+}
