@@ -1,0 +1,5 @@
+MYSQL_HOST = 'localhost'
+MYSQL_USER = 'root'
+MYSQL_PASSWORD = 'EliDB'
+MYSQL_DB = 'cymetria'
+HEX_SEC_KEY = '9204a249a0449106e5bf66376df0b524'
