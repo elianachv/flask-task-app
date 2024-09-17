@@ -7,8 +7,12 @@ def user_routes(app):
   def home():
     return render_template('index.html')
 
-  @app.route('/login', methods=['POST'])
+  @app.route('/login', methods=['GET'])
   def login():
+    return render_template('login.html')
+  
+  @app.route('/login', methods=['POST'])
+  def login_user():
     email = request.form['email']
     password = request.form['password']
     return user.login(email=email, password=password)
@@ -16,6 +20,19 @@ def user_routes(app):
   @app.route('/logout', methods=['GET'])
   def logout():
     return user.logout()
+  
+  @app.route('/register', methods=['GET'])
+  def register():
+    return render_template('register.html')
+  
+  @app.route('/user', methods=['POST'])
+  def add_user():
+    name = request.form['name']
+    lastname = request.form['lastname']
+    email = request.form['email']
+    password = request.form['password']
+    password_confirmation= request.form['password_confirmation']
+    return user.register(name=name,lastname=lastname,email=email,password=password, password_confirmation = password_confirmation)
 
 def task_routes(app):
   @app.route('/tasks',  methods=['GET'])
@@ -27,8 +44,12 @@ def task_routes(app):
     title = request.form['title']
     description = request.form['description']
     deadline = request.form['deadline']
-    user_id = request.form['user']
     status_id = request.form['status']
+    role = session['role']
+    if role == 'EMPLOYEE':
+      user_id = session['id']
+    else:
+      user_id = request.form['user']
     return task.add_task(title=title, description=description, deadline=deadline, user_id=user_id, status_id=status_id)
   
   @app.route('/task/edit',  methods=['POST'])

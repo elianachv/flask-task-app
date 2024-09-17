@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio</title>
+</head>
+
+<body>
+
+  <!DOCTYPE html>
+  <html lang="es">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Tareas - Login</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/form_style.css')}}">
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="login-box">
+        <h2>Inicia sesión</h2>
+        <form action="/login" method="post">
+          <div class="input-box">
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" name="email" required placeholder="Ingresa tu correo">
+          </div>
+          <div class="input-box">
+            <label for="password">Contraseña</label>
+            <input type="password" id="password" name="password" required placeholder="Ingresa tu contraseña">
+          </div>
+          {% if message %}
+          <div class="alert" id="alert">
+            <button class="close-btn" onclick="closeAlert()">×</button>
+            <p>{{ message }}</p>
+          </div>
+          {% endif %}
+          <div class="button-box">
+            <button type="submit">Iniciar Sesión</button>
+          </div>
+        </form>
+        <div class="register-link">
+          <p>¿No tienes cuenta? <a href="/register">Regístrate aquí</a></p>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script src="{{url_for('static', filename='js/login.js')}}"></script>
+
+  </html>
+
+
+</body>
+
+</html>

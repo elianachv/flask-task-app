@@ -1,4 +1,11 @@
-
+def register(name, lastname, email, password):
+  from server import mysql
+  cur = mysql.connection.cursor()
+  result = cur.execute('INSERT INTO users (name, lastname, email, password, role) VALUES(%s,%s,%s,%s,%s)', [name, lastname, email, password, 1])
+  mysql.connection.commit()
+  cur.close()
+  return
+ 
 def get_user_by_email_and_password(email, password):
   from server import mysql
   cur = mysql.connection.cursor()
@@ -12,8 +19,13 @@ def get_user_by_email(email):
   cur = mysql.connection.cursor()
   cur.execute('SELECT * FROM users WHERE email = %s', [email])
   user = cur.fetchone()
+ 
+  if not user:
+    return
+  
   role = get_user_role(user[5])
-  final_user= user + (role[0],)
+  final_user = user + (role[0],)
+    
   cur.close()
   return final_user
 

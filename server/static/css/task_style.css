@@ -1,8 +1,8 @@
 /* styles.css */
 
 body {
-  font-family: 'Arial', sans-serif;
-  background-color: #e0f7f7; 
+  font-family: "Arial", sans-serif;
+  background-color: #e0f7f7;
   margin: 0;
   padding: 0;
 }
@@ -17,7 +17,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #00a5a5; 
+  background-color: #00a5a5;
   color: white;
   padding: 10px 20px;
 }
@@ -32,15 +32,27 @@ body {
 }
 
 #username {
-  margin-right: 20px;
+  margin: 0px 20px;
+  font-size: 20px;
+}
+
+#username li {
+  margin: 10px;
 }
 
 .logout-btn {
   background: none;
   border: none;
   color: white;
-  font-size: 16px;
+  font-size: 20px;
   cursor: pointer;
+  text-decoration: none;
+  margin: 0px 20px;
+
+}
+
+.logout-btn li {
+  margin: 10px;
 }
 
 .logout-btn:hover {
@@ -87,7 +99,8 @@ h2 {
   align-items: center;
 }
 
-.task-options, .task-info{
+.task-options,
+.task-info {
   display: flex;
 }
 
@@ -112,24 +125,24 @@ h2 {
   background-color: #00a5a5; /* Aguamarina oscuro */
 }
 
-.task-btn.none{
-  background-color:transparent;
+.task-btn.none {
+  background-color: transparent;
   color: black;
 }
 
-.task-btn.success{
+.task-btn.success {
   background-color: rgb(32, 166, 32);
 }
 
-.task-btn.error{
+.task-btn.error {
   background-color: rgb(166, 9, 9);
 }
 
-.task-btn.warning{
+.task-btn.warning {
   background-color: orange;
 }
 
-.task-btn.info{
+.task-btn.info {
   background-color: #00bcd4;
 }
 
@@ -176,12 +189,12 @@ h2 {
 /* Animación de apertura del modal */
 @keyframes modalOpen {
   from {
-      opacity: 0;
-      transform: translateY(-50px);
+    opacity: 0;
+    transform: translateY(-50px);
   }
   to {
-      opacity: 1;
-      transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 

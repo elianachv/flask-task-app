@@ -34,7 +34,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
         document.getElementById('description').value = description;
         document.getElementById('status').value = status;
         document.getElementById('deadline').value = deadline;
-        document.getElementById('user').value = user;
+        user_element = document.getElementById('user')
+        if (user_element) {
+          document.getElementById('user').value = user;
+        }
         editTaskModal.style.display = 'block';
     }
 

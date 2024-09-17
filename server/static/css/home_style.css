@@ -1,145 +1,106 @@
-/* Reseteo básico de márgenes y padding */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-/* Estilo del cuerpo de la página */
-body {
   font-family: 'Arial', sans-serif;
-  background-color: #e0f7f7; /* Color aguamarina claro */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
 }
 
-/* Contenedor principal */
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-
-/* Caja de login */
-.login-box {
-  background-color: #ffffff; /* Fondo blanco */
-  padding: 40px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  width: 350px;
-}
-
-/* Título del formulario */
-.login-box h2 {
-  margin-bottom: 20px;
-  color: #00a5a5; /* Aguamarina intensa */
-}
-
-/* Estilos de las cajas de entrada */
-.input-box {
-  margin-bottom: 20px;
-  text-align: left;
-}
-
-/* Estilo de las etiquetas */
-.input-box label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: bold;
-  color: #00a5a5;
-}
-
-/* Estilo de los inputs */
-.input-box input {
-  width: 100%;
-  padding: 10px;
-  border: 2px solid #00a5a5;
-  border-radius: 5px;
-  font-size: 14px;
+body {
+  background-color: #e0f7f9;
   color: #333;
-  outline: none;
+  height: 100vh;
+  position: relative;
 }
 
-/* Efecto hover y focus en inputs */
-.input-box input:focus {
-  border-color: #007575; /* Color más oscuro al enfocar */
-}
-
-/* Botón de inicio de sesión */
-.button-box {
-  margin-top: 20px;
-}
-
-.button-box button {
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #00cccc;
+  color: #fff;
+  position: absolute;
+  top: 0;
   width: 100%;
-  padding: 12px;
-  background-color: #00a5a5;
+}
+
+.logo h1 {
+  font-size: 24px;
+  color: #fff;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+
+.nav-link i {
+  margin-right: 5px
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 20px;
+  transition: color 0.3s;
+  display: block;
+  margin-left: 20px;
+}
+
+.nav-links a:hover {
+  color: #005f5f;
+}
+
+.hero-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100vh;
+  background-color: #ffffff;
+}
+
+.hero-content {
+  max-width: 600px;
+}
+
+.hero-content h2 {
+  font-size: 36px;
+  color: #005f5f;
+  margin-bottom: 20px;
+}
+
+.hero-content p {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.hero-btn {
+  background-color: #00cccc;
+  color: #fff;
+  padding: 12px 24px;
   border: none;
   border-radius: 5px;
-  color: white;
   font-size: 16px;
   cursor: pointer;
+  text-decoration: none;
   transition: background-color 0.3s;
 }
 
-.button-box button:hover {
-  background-color: #007575; /* Botón más oscuro al hacer hover */
+.hero-btn:hover {
+  background-color: #009999;
 }
 
-/* Estilos del enlace de registro */
-.register-link {
-  margin-top: 20px;
-}
-
-.register-link p {
-  font-size: 14px;
-  color: #333;
-}
-
-.register-link a {
-  color: #00a5a5;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.register-link a:hover {
-  color: #007575; /* Enlace más oscuro al hacer hover */
-}
-
-.alert {
-  background-color: #f8d7da;
-  color: #721c24;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #f5c6cb;
-  border-radius: 4px;
-  font-size: 14px;
-  position: relative;
+footer {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.alert p {
-  margin: 0;
-  font-weight: bold;
-}
-
-.close-btn {
-  background: none;
-  border: none;
-  font-size: 16px;
-  color: #721c24;
-  cursor: pointer;
+  align-items:center;
+  justify-content:space-around;
+  background-color: #00cccc;
+  text-align: center;
+  padding: 15px;
+  color: #fff;
   position: absolute;
-  top: 10px;
-  right: 10px;
-}
-
-.close-btn:hover {
-  color: #f5c6cb;
+  bottom: 0;
+  width: 100%;
 }

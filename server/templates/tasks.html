@@ -17,8 +17,15 @@
                 <h1>Mis Tareas</h1>
             </div>
             <div class="navbar-right">
-                <span id="username">Usuario: {{ session['name'] }} {{ session['lastname'] }}</span>
-                <a class="logout-btn" href="{{url_for('logout')}}">Cerrar Sesión</a>
+                <span id="username">
+                    <i class="fa fa-user-circle" aria-hidden="true"></i>
+                    {{ session['name'] }} {{ session['lastname'] }}</span>
+                <a class="logout-btn" href="/">
+                    <i class="fa fa-home" aria-hidden="true"></i>
+                    Inicio</a>
+                <a class="logout-btn" href="{{url_for('logout')}}">
+                    <i class="fa fa-sign-out" aria-hidden="true"></i>
+                    Cerrar Sesión</a>
             </div>
         </nav>
 
@@ -53,7 +60,8 @@
                         </div>
                     </div>
                     <div class="task-options">
-                        <button class="edit-btn task-btn info" data-id="{{ task[0] }}" data-title="{{ task[2] }}"  data-description="{{ task[3] }}" data-deadline="{{ task[4] }}" data-status="{{task[5]}}" >
+                        <button class="edit-btn task-btn info" data-id="{{ task[0] }}" data-title="{{ task[2] }}"
+                            data-description="{{ task[3] }}" data-deadline="{{ task[4] }}" data-status="{{task[5]}}">
                             <i class="fa fa-pencil" aria-hidden="true"></i>
                             Editar
                         </button>
@@ -110,12 +118,14 @@
                         <input type="date" id="deadline" name="deadline" required>
 
                         <!-- Campo Responsable (desplegable con usuarios) -->
+                        {% if not session['role'] == 'EMPLOYEE' %}
                         <label for="user">Responsable:</label>
                         <select id="user" name="user" required>
                             {% for user in users %}
                             <option value="{{ user[0] }}">{{ user[1] }}</option>
                             {% endfor %}
                         </select>
+                        {% endif %}
 
                         <!-- Botón de enviar -->
                         <button class="task-btn info" type="submit">Agregar Tarea</button>
@@ -154,13 +164,14 @@
                         <label for="deadline">Fecha Límite:</label>
                         <input type="date" id="deadline" name="deadline" required>
 
-                        <!-- Campo Responsable (desplegable con usuarios) -->
+                        {% if not session['role'] == 'EMPLOYEE' %}
                         <label for="user">Responsable:</label>
                         <select id="user" name="user" required>
                             {% for user in users %}
-                            <option value="{{ user[0] }}">{{ user[4] }}</option>
+                            <option value="{{ user[0] }}">{{ user[1] }}</option>
                             {% endfor %}
                         </select>
+                        {% endif %}
 
                         <!-- Botón de enviar -->
                         <button class="task-btn info" type="submit">Editar Tarea</button>
