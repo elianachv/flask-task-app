@@ -58,8 +58,12 @@ def task_routes(app):
     title = request.form['title']
     description = request.form['description']
     deadline = request.form['deadline']
-    user_id = request.form['user']
     status_id = request.form['status']
+    role = session['role']
+    if role == 'EMPLOYEE':
+      user_id = session['id']
+    else:
+      user_id = request.form['user']
     return task.edit_task(task_id=task_id, title=title, description=description, deadline=deadline, user_id=user_id, status_id=status_id)
  
   @app.route('/task/delete',  methods=['POST'])

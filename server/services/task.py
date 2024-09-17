@@ -14,17 +14,10 @@ def get_tasks(user_id):
    return task.get_tasks_by_user(user_id=user_id)
 
 def add_task(title, description, deadline, user_id, status_id):
-  role = session['role']
-  if role == 'EMPLOYEE':
-    user_id = session['id']
-    
   task.add_task(title=title, description=description, deadline=deadline, user_id=user_id, status_id=status_id)
   return redirect(url_for('tasks'))
 
 def edit_task(task_id,title, description, deadline, user_id, status_id):
-  role = session['role']
-  if role == 'EMPLOYEE':
-    user_id = session['id']
   task.edit_task(task_id=task_id,title=title, description=description, deadline=deadline, user_id=user_id, status_id=status_id)
   return redirect(url_for('tasks'))
 

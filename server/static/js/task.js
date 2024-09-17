@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
     }
 
-   const  openEditTaskModal = function (id, title, description, status, deadline, user) {
+   const  openEditTaskModal = function (id, title, description, status, deadline,user) {
         document.getElementById('task_id').value = id;
         document.getElementById('title').value = title;
         document.getElementById('description').value = description;
