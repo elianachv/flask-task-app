@@ -1,5 +1,5 @@
-MYSQL_HOST = 'localhost'
-MYSQL_USER = 'root'
-MYSQL_PASSWORD = 'EliDB'
+MYSQL_HOST = 'database-1.cluster-cx13v6lvlepm.us-east-2.rds.amazonaws.com'
+MYSQL_USER = 'admin'
+MYSQL_PASSWORD = 'e8qmOj5RQyMCeMEi3Z1s'
 MYSQL_DB = 'cymetria'
 HEX_SEC_KEY = '9204a249a0449106e5bf66376df0b524'
