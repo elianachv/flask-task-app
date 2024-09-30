@@ -1,11 +1,11 @@
 import boto3
-import os
-# import keys
+# import os
+from server import keys
 bucket_name = 'cymetria-server-bucket'
 
 def connect_s3():
-    # session_aws = boto3.Session(keys.ACCESS_KEY, keys.SECRET_KEY)
-    session_aws = boto3.Session(os.getenv('ACCESS_KEY'), os.getenv('SECRET_KEY'))
+    session_aws = boto3.Session(keys.ACCESS_KEY, keys.SECRET_KEY)
+    # session_aws = boto3.Session(os.getenv('ACCESS_KEY'), os.getenv('SECRET_KEY'))
     session_s3 = session_aws.resource('s3')
     return session_s3
 
@@ -17,8 +17,10 @@ def get_file(session_s3):
     print(bucket_objects)
 
 def save_file(id, photo):
+    print("SAVING FILE")
     extension = photo.filename.split(".")[1]
-    photo_name = id + "." + extension
+    email = id.split(".")[0]
+    photo_name = email + "." + extension
     photo_path = "/tmp/" + photo_name
     photo.save(photo_path)
     print("Photo saved")
