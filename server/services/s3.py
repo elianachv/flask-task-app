@@ -17,20 +17,17 @@ def get_file(session_s3):
     print(bucket_objects)
 
 def save_file(id, photo):
-    print("SAVING FILE")
     extension = photo.filename.split(".")[1]
     email = id.split(".")[0]
     photo_name = email + "." + extension
     photo_path = "/tmp/" + photo_name
     photo.save(photo_path)
-    print("Photo saved")
     return photo_path, photo_name
 
 def upload_file(session_s3, photo_path, photo_name):
-    path_photo_local = "images/" + photo_name
+    path_photo_local = "profile_img/" + photo_name
     session_s3.meta.client.upload_file(photo_path, bucket_name, path_photo_local)
-    url = "https://%s.s3.amazonaws.com/%s/%s" % (bucket_name,'profile_img', photo_name)
-    print("Photo uploaded")
+    url = "https://%s.s3.us-east-2.amazonaws.com/%s/%s" % (bucket_name,'profile_img', photo_name.replace('@','%40'))
     return url
 
 

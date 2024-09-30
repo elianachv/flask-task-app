@@ -2,9 +2,9 @@ def register(name, lastname, email, password, image):
   from server import mysql
   cur = mysql.connection.cursor()
   if image != None:
-    cur.execute('INSERT INTO users (name, lastname, email, password, role, image) VALUES(%s,%s,%s,%s,%s)', [name, lastname, email, password, 1, image])
+    cur.execute('INSERT INTO users (name, lastname, email, password, role, image) VALUES(%s,%s,%s,%s,%s,%s)', [name, lastname, email, password, 1, image])
   else:
-    cur.execute('INSERT INTO users (name, lastname, email, password, role) VALUES(%s,%s,%s,%s)', [name, lastname, email, password, 1])
+    cur.execute('INSERT INTO users (name, lastname, email, password, role) VALUES(%s,%s,%s,%s,%s)', [name, lastname, email, password, 1])
     
   mysql.connection.commit()
   cur.close()
