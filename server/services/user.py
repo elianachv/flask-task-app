@@ -1,5 +1,5 @@
 from server.database import user
-from services import s3
+from server.services import s3
 from flask import session, render_template, redirect, url_for
 
 def register(name, lastname, email, password, password_confirmation, photo):
