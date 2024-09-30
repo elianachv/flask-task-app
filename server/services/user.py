@@ -31,8 +31,9 @@ def login(email, password):
       session['email'] = email
       session['name'] = db_user[3]
       session['lastname'] = db_user[4]
-      session['role'] = db_user[6]
-      session['image'] = db_user[7]
+      session['image'] = db_user[6]
+      session['role'] = db_user[7]
+
       return redirect(url_for('tasks'))
     
     else:

@@ -19,7 +19,7 @@ def get_file(session_s3):
 def save_file(id, photo):
     extension = photo.filename.split(".")[1]
     email = id.split(".")[0]
-    photo_name = email.replace('@','') + "." + extension
+    photo_name = email.replace('@','_') + "." + extension
     photo_path = "/tmp/" + photo_name
     photo.save(photo_path)
     return photo_path, photo_name
