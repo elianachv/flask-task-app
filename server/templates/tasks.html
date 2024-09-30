@@ -17,11 +17,8 @@
                 <h1>Mis Tareas</h1>
             </div>
             <div class="navbar-right">
-                <span id="userimg">
-                    <img src={{ session['image'] }} alt="" srcset="">
-                </span>
                 <span id="username">
-                    <i class="fa fa-user-circle" aria-hidden="true"></i>
+                    <img src={{ session['image'] }} alt="" srcset="">
                     {{ session['name'] }} {{ session['lastname'] }}</span>
                 <a class="logout-btn" href="/">
                     <i class="fa fa-home" aria-hidden="true"></i>
