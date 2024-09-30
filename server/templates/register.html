@@ -35,6 +35,10 @@
             <label for="password">Confirma Contraseña</label>
             <input type="password" id="password_confirmation" name="password_confirmation" required placeholder="Ingresa tu contraseña">
           </div>
+          <div class="input-box">
+            <label for="photo">Foto de perfil</label>
+            <input type="file" name="photo" id="photo">
+          </div>
           {% if message %}
           <div class="alert" id="alert">
             <button class="close-btn" onclick="closeAlert()">×</button>

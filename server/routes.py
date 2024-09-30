@@ -32,7 +32,9 @@ def user_routes(app):
     email = request.form['email']
     password = request.form['password']
     password_confirmation= request.form['password_confirmation']
-    return user.register(name=name,lastname=lastname,email=email,password=password, password_confirmation = password_confirmation)
+    file = request.files
+    photo = file["photo"]
+    return user.register(name=name,lastname=lastname,email=email,password=password, password_confirmation = password_confirmation, photo = photo)
 
 def task_routes(app):
   @app.route('/tasks',  methods=['GET'])

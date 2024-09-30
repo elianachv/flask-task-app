@@ -1,14 +1,20 @@
 from server.database import user
+from services import s3
 from flask import session, render_template, redirect, url_for
 
-def register(name, lastname, email, password, password_confirmation):
+def register(name, lastname, email, password, password_confirmation, photo):
   db_user = user.get_user_by_email(email=email)
+  img_url = None
   
   if password == password_confirmation:
     if db_user is not None:
       return render_template('register.html', message = '⚠️ Ya tienes una cuenta inicia sesión.')
     else:
-      user.register(name, lastname, email, password)
+      if photo != None:
+        session = s3.connect_s3()
+        photo_path, photo_name = s3.save_file(email,photo)
+        img_url = s3.upload_file(session, photo_path, photo_name)
+      user.register(name, lastname, email, password, img_url)
       return redirect(url_for('login'))
 
   else:
@@ -26,6 +32,7 @@ def login(email, password):
       session['name'] = db_user[3]
       session['lastname'] = db_user[4]
       session['role'] = db_user[6]
+      session['image'] = db_user[7]
       return redirect(url_for('tasks'))
     
     else:

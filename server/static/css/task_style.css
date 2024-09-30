@@ -31,6 +31,12 @@ body {
   align-items: center;
 }
 
+#userimg {
+  margin: 0px 20px;
+  font-size: 20px;
+  border-radius: 50;
+}
+
 #username {
   margin: 0px 20px;
   font-size: 20px;
