@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_mysqldb import MySQL
-from server.routes import user_routes, task_routes
+from server.routes import user_routes, task_routes, global_routes
 from server import config
 
 mysql = MySQL()
@@ -19,6 +19,7 @@ def create_app():
     mysql.init_app(app)
 
     # Inicializa rutas
+    global_routes(app)
     user_routes(app)
     task_routes(app)
 
