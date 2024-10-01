@@ -1,6 +1,11 @@
 from flask import render_template, request, session
 from server.services import user, task
 
+def global_routes(app):
+  @app.route('/ping', methods=['GET'])
+  def ping():
+    return 'pong'
+
 def user_routes(app):
 
   @app.route('/', methods=['GET'])
